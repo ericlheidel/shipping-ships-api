@@ -101,12 +101,10 @@ def post_ship(ship_data):
         database_cursor.execute(
             """
                 INSERT INTO Ship (
-                    id,
                     name,
                     hauler_id
                 )
                     VALUES (
-                        NULL,
                         ?,
                         ?
                     )
