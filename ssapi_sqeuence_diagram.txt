@@ -1,0 +1,36 @@
+title Shipping Ships API
+-----
+participant Client
+
+participant Python
+
+participant JSONServer
+
+participant NSS HANDLER
+
+participant Views
+
+participant Database
+-----
+entryspacing 1.1
+Client->Python:GET request to "/ships"
+
+Python->JSONServer:Run do_GET() method
+
+JSONServer->NSS HANDLER: run parse_url()\n(convert url to python)
+
+NSS HANDLER-->JSONServer: return parsed url / \nurl dictionary
+
+
+JSONServer->Views:request Ship/Dock/Hauler
+Views->Database: retrieve Ship/Dock/Hauler info
+
+Database-->Views: return information
+
+Views-->JSONServer: serialize PYTHON info to JSON
+
+JSONServer-->Python: Here's all yer\nShips/Docks/Haulers\n(in JSON format)
+
+Python-->Client: Here's all yer\nShips/Docks/Haulers\n(in JSON format)
+-----
+
