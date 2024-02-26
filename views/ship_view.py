@@ -93,3 +93,25 @@ def retrieve_ship(pk):
         serialized_ship = json.dumps(dictionary_version_of_object)
 
     return serialized_ship
+
+
+def post_ship(ship_data):
+    with sqlite3.connect("./shipping.db") as connection:
+        database_cursor = connection.cursor()
+        database_cursor.execute(
+            """
+                INSERT INTO Ship (
+                    id,
+                    name,
+                    hauler_id
+                )
+                    VALUES (
+                        NULL,
+                        ?,
+                        ?
+                    )
+            """,
+            (ship_data["name"], ship_data["hauler_id"]),
+        )
+
+        return True if database_cursor.rowcount > 0 else False
