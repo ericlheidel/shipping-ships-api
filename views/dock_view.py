@@ -98,14 +98,12 @@ def post_dock(dock_info):
         database_cursor.execute(
             """
                 INSERT INTO Dock (
-                    id,
                     location,
                     capacity
                 )
                     VALUES (
-                        NULL,
                         ?,
-
+                        ?
                     )
             """,
             (dock_info["location"], dock_info["capacity"]),

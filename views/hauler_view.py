@@ -100,12 +100,10 @@ def post_hauler(hauler_data):
         database_cursor.execute(
             """
                 INSERT INTO Hauler (
-                    id,
                     name,
                     dock_id
                 )
                     VALUES (
-                        NULL,
                         ?,
                         ?
                     )

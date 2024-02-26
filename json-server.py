@@ -147,7 +147,7 @@ class JSONServer(HandleRequests):
     def do_POST(self):
         """Handle POST requests from a client"""
         url = self.parse_url(self.path)
-        pk = url["url"]
+        pk = url["pk"]
 
         content_length = int(self.headers.get("content-length", 0))
         request_body = self.rfile.read(content_length)
