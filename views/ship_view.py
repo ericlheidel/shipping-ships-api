@@ -65,7 +65,18 @@ def list_ships(url):
 
             ships = []
             for row in query_results:
-                ships.append(dict(row))
+                hauler = {
+                    "id": row["haulerId"],
+                    "name": row["haulerName"],
+                    "dock_id": row["dock_id"],
+                }
+                ship = {
+                    "id": row["id"],
+                    "name": row["name"],
+                    "hauler_id": row["hauler_id"],
+                    "hauler": hauler,
+                }
+                ships.append(ship)
 
             serialized_ships = json.dumps(ships)
 

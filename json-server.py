@@ -23,7 +23,7 @@ class JSONServer(HandleRequests):
 
         response_body = ""
         url = self.parse_url(self.path)
-
+        print(url)
         if url["requested_resource"] == "docks":
             if url["pk"] != 0:
                 response_body = retrieve_dock(url["pk"])
