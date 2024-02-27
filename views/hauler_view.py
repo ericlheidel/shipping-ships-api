@@ -8,11 +8,11 @@ def update_hauler(id, hauler_data):
 
         db_cursor.execute(
             """
-            UPDATE Hauler
-                SET
-                    name = ?,
-                    dock_id = ?
-            WHERE id = ?
+                UPDATE Hauler
+                    SET
+                        name = ?,
+                        dock_id = ?
+                    WHERE id = ?
             """,
             (hauler_data["name"], hauler_data["dock_id"], id),
         )
@@ -48,12 +48,12 @@ def list_haulers():
         # Write the SQL query to get the information you want
         db_cursor.execute(
             """
-        SELECT
-            h.id,
-            h.name,
-            h.dock_id
-        FROM Hauler h
-        """
+                SELECT
+                    h.id,
+                    h.name,
+                    h.dock_id
+                FROM Hauler h
+            """
         )
         query_results = db_cursor.fetchall()
 
@@ -77,13 +77,13 @@ def retrieve_hauler(pk):
         # Write the SQL query to get the information you want
         db_cursor.execute(
             """
-        SELECT
-            h.id,
-            h.name,
-            h.dock_id
-        FROM Hauler h
-        WHERE h.id = ?
-        """,
+                SELECT
+                    h.id,
+                    h.name,
+                    h.dock_id
+                FROM Hauler h
+                WHERE h.id = ?
+            """,
             (pk,),
         )
         query_results = db_cursor.fetchone()

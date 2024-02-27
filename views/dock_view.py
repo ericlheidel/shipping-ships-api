@@ -8,11 +8,11 @@ def update_dock(id, dock_data):
 
         db_cursor.execute(
             """
-            UPDATE Dock
-                SET
-                    location = ?,
-                    capacity = ?
-            WHERE id = ?
+                UPDATE Dock
+                    SET
+                        location = ?,
+                        capacity = ?
+                    WHERE id = ?
             """,
             (dock_data["location"], dock_data["capacity"], id),
         )
@@ -46,12 +46,12 @@ def list_docks():
         # Write the SQL query to get the information you want
         db_cursor.execute(
             """
-        SELECT
-            d.id,
-            d.location,
-            d.capacity
-        FROM Dock d
-        """
+                SELECT
+                    d.id,
+                    d.location,
+                    d.capacity
+                FROM Dock d
+            """
         )
         query_results = db_cursor.fetchall()
 
@@ -75,13 +75,13 @@ def retrieve_dock(pk):
         # Write the SQL query to get the information you want
         db_cursor.execute(
             """
-        SELECT
-            d.id,
-            d.location,
-            d.capacity
-        FROM Dock d
-        WHERE d.id = ?
-        """,
+                SELECT
+                    d.id,
+                    d.location,
+                    d.capacity
+                FROM Dock d
+                WHERE d.id = ?
+            """,
             (pk,),
         )
         query_results = db_cursor.fetchone()
